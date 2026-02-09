@@ -3,12 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  place-items: center;
-  justify-content: center;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  color: #ffffff;
+  background-color: #121212;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,58 +13,109 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #1e1e1e, #0f0f0f);
+}
+
+/* Contenedor principal tipo tarjeta */
+#root {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Títulos */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 12px;
 }
 
 h1 {
-  font-size: 30px;
-  line-height: 1.1;
-  place-items: center;
-  justify-content: center;
+  font-size: 26px;
 }
 
-button {
+h2 {
+  font-size: 22px;
+  margin-top: 24px;
+}
+
+/* Textos */
+p {
+  text-align: center;
+  margin: 8px 0;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 6px 0;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: 1px solid #333;
+  background: #0f0f0f;
+  color: white;
+  font-size: 14px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+input::placeholder {
+  color: #888;
+}
+
+/* Botones */
+button {
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  background: linear-gradient(135deg, #646cff, #4b55ff);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, opacity 0.1s;
+  margin-top: 6px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(100,108,255,0.4);
+  opacity: 0.95;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Listas */
+ul, ol {
+  padding-left: 18px;
+}
+
+li {
+  margin: 6px 0;
+  background: #0f0f0f;
+  padding: 8px 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botón eliminar más pequeño */
+li button {
+  width: auto;
+  padding: 6px 10px;
+  font-size: 12px;
+  background: linear-gradient(135deg, #ff4d4d, #ff2f2f);
 }

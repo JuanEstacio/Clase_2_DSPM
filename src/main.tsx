@@ -13,17 +13,16 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 .render(
-  <h1>
-    <React.StrictMode>
-        < HelloWorld  />
-        < PrintMessage message = "Como te va?" />
-        < PrintMessage message = "Soy un mensaje!!!" />
-        <Contador></Contador>
-        <Arrays></Arrays>
-        <Arreglos></Arreglos>
-        <EjemploDependencia></EjemploDependencia>
-        <EjemploMontaje></EjemploMontaje>
-        <ContactsApp></ContactsApp>
-    </React.StrictMode>
-  </h1>
+  <React.StrictMode>
+  <HelloWorld />
+  <PrintMessage message="Como te va?" />
+  <PrintMessage message="Soy un mensaje!!!" />
+  <Contador />
+  <Arrays />
+  <Arreglos />
+  <EjemploDependencia />
+  <EjemploMontaje />
+  <ContactsApp />
+</React.StrictMode>
+
 )
