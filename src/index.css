@@ -119,3 +119,12 @@ li button {
   font-size: 12px;
   background: linear-gradient(135deg, #ff4d4d, #ff2f2f);
 }
+
+.img-container {
+  text-align: center;
+}
+
+.img-container img {
+  width: 120px;
+  margin-bottom: 10px;
+}

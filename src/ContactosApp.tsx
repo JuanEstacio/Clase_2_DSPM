@@ -31,7 +31,12 @@ function ContactsApp() {
 
   return (
     <>
+      <div className="img-container">
+        <img src="/contacto.png" alt="Contactos" />
+      </div>
+
       <h2>Lista de Contactos</h2>
+
       <ContactForm onAdd={addContact} />
       <ContactList contacts={contacts} onDelete={deleteContact} />
     </>
