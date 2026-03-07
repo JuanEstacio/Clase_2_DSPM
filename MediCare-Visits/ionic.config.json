@@ -1,0 +1,7 @@
+{
+  "name": "MediCare-Visits",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
