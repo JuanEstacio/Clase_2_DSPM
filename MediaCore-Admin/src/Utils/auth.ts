@@ -10,11 +10,5 @@ email: "medico@medicare.com",
 password: "123",
 nombre: "Dr Carlos Perez",
 rol: "Medico"
-},
-{
-email: "estacioalomia@gmail.com",
-password: "12345",
-nombre: "Juan Estacio",
-rol: "Ingeniero Multimedia"
 }
 ]
