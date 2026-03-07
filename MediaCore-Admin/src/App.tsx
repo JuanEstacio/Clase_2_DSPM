@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import LoginForm from "./Components/LoginForm";
-import Dashboard from "./Pages/DashBoard";
+import { Routes, Route, Navigate } from "react-router-dom"
+import LoginForm from "./Components/LoginForm"
+import Dashboard from "./Pages/DashBoard"
+import { useEffect, useState } from "react"
 
 function App(){
 
@@ -16,6 +17,11 @@ setUser(JSON.parse(stored))
 
 },[])
 
+const login=(userData:any)=>{
+localStorage.setItem("medicare_user",JSON.stringify(userData))
+setUser(userData)
+}
+
 const logout=()=>{
 localStorage.removeItem("medicare_user")
 setUser(null)
@@ -23,14 +29,27 @@ setUser(null)
 
 return(
 
-<div>
+<Routes>
 
-{user
-? <Dashboard user={user} onLogout={logout}/>
-: <LoginForm onLogin={setUser}/>
+<Route
+path="/"
+element={
+user
+? <Navigate to="/dashboard"/>
+: <LoginForm onLogin={login}/>
 }
+/>
 
-</div>
+<Route
+path="/dashboard"
+element={
+user
+? <Dashboard user={user} onLogout={logout}/>
+: <Navigate to="/"/>
+}
+/>
+
+</Routes>
 
 )
 

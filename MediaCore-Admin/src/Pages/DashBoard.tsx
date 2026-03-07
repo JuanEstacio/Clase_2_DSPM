@@ -1,7 +1,14 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect } from "react"
+import PerfilUsuario from "../Components/PerfilUsuario"
+import FormularioPaciente from "../Components/FormularioPaciente"
+import TablaPacientes from "../Components/TablaPacientes"
 
+interface Props{
+user:any
+onLogout:()=>void
+}
 
-function Dashboard({user,onLogout}:any){
+function Dashboard({user,onLogout}:Props){
 
 const[pacientes,setPacientes]=useState<any[]>([])
 const[busqueda,setBusqueda]=useState("")
@@ -29,9 +36,7 @@ JSON.stringify(pacientes)
 const guardarPaciente=(p:any)=>{
 
 if(p.id){
-setPacientes(prev=>
-prev.map(x=>x.id===p.id?p:x)
-)
+setPacientes(prev=>prev.map(x=>x.id===p.id?p:x))
 }else{
 p.id=Date.now()
 setPacientes(prev=>[...prev,p])
@@ -46,11 +51,9 @@ setPacientes(prev=>prev.filter(p=>p.id!==id))
 }
 
 const pacientesFiltrados=pacientes.filter(p=>
-
 (p.nombre+p.apellido+p.dni)
 .toLowerCase()
 .includes(busqueda.toLowerCase())
-
 )
 
 return(
@@ -84,7 +87,6 @@ onEliminar={eliminarPaciente}
 <div>
 
 <h3>Estadísticas</h3>
-
 <p>Total pacientes: {pacientes.length}</p>
 
 </div>

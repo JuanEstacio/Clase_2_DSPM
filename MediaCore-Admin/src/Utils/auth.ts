@@ -15,6 +15,6 @@ rol: "Medico"
 email: "estacioalomia@gmail.com",
 password: "12345",
 nombre: "Juan Estacio",
-rol: "Ingenuiero Multimedia"
+rol: "Ingeniero Multimedia"
 }
 ]
