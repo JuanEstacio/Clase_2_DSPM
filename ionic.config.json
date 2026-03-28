@@ -1,0 +1,7 @@
+{
+  "name": "Challenge_7",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
