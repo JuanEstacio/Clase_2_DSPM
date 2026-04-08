@@ -1,22 +1,34 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
+import { useHistory } from "react-router-dom";
 import './Home.css';
 
 const Home: React.FC = () => {
+
+  const history = useHistory();
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+      <IonContent className="ion-padding">
+
+        <h2>Sensores</h2>
+
+        <IonButton expand="block" onClick={() => history.push("/geo")}>
+          Geolocalización
+        </IonButton>
+
+        <IonButton expand="block" onClick={() => history.push("/camera")}>
+          Cámara
+        </IonButton>
+
+        <IonButton expand="block" onClick={() => history.push("/device")}>
+          Dispositivo
+        </IonButton>
+
+        <IonButton expand="block" onClick={() => history.push("/haptics")}>
+          Vibración
+        </IonButton>
+
       </IonContent>
     </IonPage>
   );
