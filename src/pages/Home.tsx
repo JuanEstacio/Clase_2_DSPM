@@ -1,22 +1,26 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
+import { useHistory } from "react-router-dom";
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
 const Home: React.FC = () => {
+
+  const history = useHistory();
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+      <IonContent className="ion-padding">
+
+        <h2>Maps App</h2>
+
+        <IonButton expand="block" onClick={() => history.push("/map")}>
+          Ir al mapa
+        </IonButton>
+
+        <IonButton expand="block" onClick={() => history.push("/history")}>
+          Ver historial
+        </IonButton>
+
       </IonContent>
     </IonPage>
   );
