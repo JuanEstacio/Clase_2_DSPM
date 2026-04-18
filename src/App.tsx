@@ -4,6 +4,8 @@ import { IonReactRouter } from '@ionic/react-router';
 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import TasksPage from './pages/TasksPage';
+import TaskFormPage from './pages/TaskFormPage';
 import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */

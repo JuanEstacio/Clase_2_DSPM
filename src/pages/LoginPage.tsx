@@ -30,6 +30,13 @@ const LoginPage: React.FC = () => {
   }, []);
 
   const handleLogin = async () => {
+    if (!email || !password) {
+    console.log("Campos vacíos");
+    return;
+  }
+
+    await login(email, password);
+
     const success = await login(email, password);
 
     if (success) {
