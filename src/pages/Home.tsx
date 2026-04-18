@@ -8,20 +8,17 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from '../services/firebase';
 
-import TasksPage from './TasksPage';
-import TaskFormPage from './TaskFormPage';
+import MissionsPage from './MissionsPage';
+import ResultsPage from './ResultsPage';
 
 const Home: React.FC = () => {
 
   const history = useHistory();
-
-  const [view, setView] = useState<"menu" | "tasks" | "new">("menu");
+  const [view, setView] = useState<"menu" | "missions" | "results">("menu");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      if (!user) {
-        history.replace("/login");
-      }
+      if (!user) history.replace("/login");
     });
     return () => unsubscribe();
   }, []);
@@ -40,12 +37,12 @@ const Home: React.FC = () => {
           <>
             <h2>Home</h2>
 
-            <IonButton expand="block" onClick={() => setView("tasks")}>
-              Ver tareas
+            <IonButton expand="block" onClick={() => setView("missions")}>
+              Ver misiones
             </IonButton>
 
-            <IonButton expand="block" onClick={() => setView("new")}>
-              Nueva tarea
+            <IonButton expand="block" onClick={() => setView("results")}>
+              Ver resultados
             </IonButton>
 
             <IonButton expand="block" color="danger" onClick={logout}>
@@ -54,14 +51,14 @@ const Home: React.FC = () => {
           </>
         )}
 
-        {/* LISTA */}
-        {view === "tasks" && (
-          <TasksPage goBack={() => setView("menu")} />
+        {/* MISIONES */}
+        {view === "missions" && (
+          <MissionsPage goBack={() => setView("menu")} />
         )}
 
-        {/* FORM */}
-        {view === "new" && (
-          <TaskFormPage goBack={() => setView("tasks")} />
+        {/* RESULTADOS */}
+        {view === "results" && (
+          <ResultsPage goBack={() => setView("menu")} />
         )}
 
       </IonContent>
