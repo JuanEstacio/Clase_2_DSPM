@@ -1,34 +1,26 @@
 import {
-  IonButton,
-  IonProgressBar
+  IonPage,
+  IonContent
 } from '@ionic/react';
 
 import useMissions from "../hooks/useMissions";
 
 const ResultsPage: React.FC<{ goBack: () => void }> = ({ goBack }) => {
 
-  const { missions, points, progress } = useMissions();
+  const { points, progress, missions } = useMissions();
 
   return (
-    <>
-      <h2>Resultados</h2>
+    <IonPage>
+      <IonContent className="ion-padding">
 
-      <p>Puntos totales: {points}</p>
+        <h2>Resultados</h2>
 
-      <p>
-        Misiones completadas: {
-          missions.filter(m => m.completed).length
-        } / {missions.length}
-      </p>
+        <p>Puntos: {points}</p>
+        <p>Progreso: {(progress * 100).toFixed(0)}%</p>
+        <p>Completadas: {missions.filter(m => m.completed).length}</p>
 
-      <IonProgressBar value={progress}></IonProgressBar>
-
-      <p>{Math.round(progress * 100)}% completado</p>
-
-      <IonButton expand="block" onClick={goBack}>
-        Volver
-      </IonButton>
-    </>
+      </IonContent>
+    </IonPage>
   );
 };
 

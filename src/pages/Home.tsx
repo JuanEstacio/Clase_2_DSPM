@@ -4,17 +4,19 @@ import {
   IonButton
 } from '@ionic/react';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { auth } from '../services/firebase';
 
 import MissionsPage from './MissionsPage';
 import ResultsPage from './ResultsPage';
+import RankingPage from './RankingPage';
 
 const Home: React.FC = () => {
 
   const history = useHistory();
-  const [view, setView] = useState<"menu" | "missions" | "results">("menu");
+
+  const [view, setView] = useState<"menu" | "missions" | "results" | "ranking">("menu");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -32,17 +34,20 @@ const Home: React.FC = () => {
     <IonPage>
       <IonContent className="ion-padding">
 
-        {/* MENU */}
         {view === "menu" && (
           <>
             <h2>Home</h2>
 
             <IonButton expand="block" onClick={() => setView("missions")}>
-              Ver misiones
+              Misiones
             </IonButton>
 
             <IonButton expand="block" onClick={() => setView("results")}>
-              Ver resultados
+              Resultados
+            </IonButton>
+
+            <IonButton expand="block" onClick={() => setView("ranking")}>
+              Ranking
             </IonButton>
 
             <IonButton expand="block" color="danger" onClick={logout}>
@@ -51,14 +56,16 @@ const Home: React.FC = () => {
           </>
         )}
 
-        {/* MISIONES */}
         {view === "missions" && (
           <MissionsPage goBack={() => setView("menu")} />
         )}
 
-        {/* RESULTADOS */}
         {view === "results" && (
           <ResultsPage goBack={() => setView("menu")} />
+        )}
+
+        {view === "ranking" && (
+          <RankingPage goBack={() => setView("menu")} />
         )}
 
       </IonContent>

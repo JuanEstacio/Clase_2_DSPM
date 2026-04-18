@@ -1,27 +1,36 @@
 import { useState } from "react";
 import { Geolocation } from "@capacitor/geolocation";
 
-const useGeolocationMission = () => {
+const useGeolocation = () => {
 
-  const [start, setStart] = useState<any>(null);
+  const [startPos, setStartPos] = useState<any>(null);
+
+  const getCurrentPosition = async () => {
+    const pos = await Geolocation.getCurrentPosition();
+    return {
+      lat: pos.coords.latitude,
+      lng: pos.coords.longitude
+    };
+  };
 
   const startTracking = async () => {
-    const pos = await Geolocation.getCurrentPosition();
-    setStart(pos.coords);
+    const pos = await getCurrentPosition();
+    setStartPos(pos);
   };
 
-  const checkDistance = async () => {
-    const pos = await Geolocation.getCurrentPosition();
+  const getDistance = async () => {
+    if (!startPos) return 0;
 
-    const dx = pos.coords.latitude - start.latitude;
-    const dy = pos.coords.longitude - start.longitude;
+    const current = await getCurrentPosition();
 
-    const distance = Math.sqrt(dx * dx + dy * dy) * 111000;
+    const dx = current.lat - startPos.lat;
+    const dy = current.lng - startPos.lng;
 
-    return distance > 30;
+    // Aproximación simple (suficiente para el parcial)
+    return Math.sqrt(dx * dx + dy * dy) * 111000;
   };
 
-  return { startTracking, checkDistance };
+  return { startTracking, getDistance };
 };
 
-export default useGeolocationMission;
+export default useGeolocation;
