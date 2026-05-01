@@ -13,9 +13,9 @@ const Home: React.FC = () => {
 
         <h2>Sensores</h2>
 
-        <IonButton expand="block" onClick={() => history.push("/geo")}>
+        <button className="bg-green-500 block w-full rounded-xl text-black font-bold hover:bg-green-600 p-4" onClick={() => history.push("/geo")}>
           Geolocalización
-        </IonButton>
+        </button>
 
         <IonButton expand="block" onClick={() => history.push("/camera")}>
           Cámara
